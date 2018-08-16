@@ -29,7 +29,7 @@ class SongsController < ApplicationController
     erb :'/songs/edit'
   end
 
-  post '/songs/:slug' do
+  patch '/songs/:slug' do
     @song = Song.find_by_slug(params[:slug])
     @song.update(params["Name"])
     if !params["Artist Name"].empty?
