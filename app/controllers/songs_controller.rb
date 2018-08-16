@@ -25,8 +25,18 @@ class SongsController < ApplicationController
   end
 
   get '/songs/:slug/edit' do
-    @song = Song.find_by_slug(params[:id])
+    @song = Song.find_by_slug(params[:slug])
     erb :'/songs/edit'
+  end
+
+  post '/songs/:slug' do
+    @song = Song.find_by_slug(params[:slug])
+    @song.update(params["song"])
+    if !params["owner"]["name"].empty?
+      @pet.owner = Owner.create(name: params["owner"]["name"])
+    end
+    @pet.save
+    redirect to "pets/#{@pet.id}"
   end
 
 end
