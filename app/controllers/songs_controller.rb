@@ -31,7 +31,7 @@ class SongsController < ApplicationController
 
   post '/songs/:slug' do
     @song = Song.find_by_slug(params[:slug])
-    @song.update(params["song"])
+    @song.update(params["Name"])
     if !params["Artist Name"].empty?
       @song.artist = Artist.find_or_create_by(name: params["Artist Name"])
     end
