@@ -13,4 +13,14 @@ class SongsController < ApplicationController
   get '/songs/new' do
     erb :'/songs/new'
   end
+
+  post '/songs' do
+      @song = Song.create(params[:song])
+      if !params["artist"]["name"].empty?
+        @song.artists << Pet.create(name: params["artist"]["name"])
+      end
+      @song.save
+      redirect to "songs/#{@song.id}"
+    end
+
 end
