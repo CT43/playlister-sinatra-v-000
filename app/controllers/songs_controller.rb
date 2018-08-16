@@ -32,7 +32,7 @@ class SongsController < ApplicationController
   post '/songs/:slug' do
     @song = Song.find_by_slug(params[:slug])
     @song.update(params["song"])
-    if !params["owner"]["name"].empty?
+    if !params["artist"]["name"].empty?
       @pet.owner = Owner.create(name: params["owner"]["name"])
     end
     @pet.save
