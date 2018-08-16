@@ -35,8 +35,8 @@ class SongsController < ApplicationController
     if !params["Artist Name"].empty?
       @song.artist = Artist.find_or_create_by(name: params["Artist Name"])
     end
-    @pet.save
-    redirect to "pets/#{@pet.id}"
+    @song.save
+    redirect to "songs/#{@song.slug}"
   end
 
 end
