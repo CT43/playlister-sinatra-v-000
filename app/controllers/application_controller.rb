@@ -7,4 +7,9 @@ class ApplicationController < Sinatra::Base
   get '/' do
     erb :index
   end
+
+  patch '/songs/house-of-balloons' do
+    "Hello World"
+  end
+  
 end
